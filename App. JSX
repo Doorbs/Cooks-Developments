@@ -1,0 +1,320 @@
+import React, { useState } from 'react';
+import { Building, TrendingUp, ShieldCheck, ArrowRight, Wallet, CheckCircle, Phone, Mail, ChevronRight, Menu, X } from 'lucide-react';
+
+const InvestorPack = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  // Brand Colors: Navy Blue (#0f172a) and Gold (#ca8a04)
+
+  return (
+    <div className="font-sans text-slate-800 bg-slate-50 min-h-screen flex flex-col">
+      {/* --- Navigation --- */}
+      <nav className="bg-slate-900 text-white sticky top-0 z-50 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-3">
+              {/* Logo Icon Placeholder */}
+              <div className="w-10 h-10 bg-gradient-to-tr from-yellow-600 to-yellow-400 rounded-lg flex items-center justify-center shadow-lg">
+                <TrendingUp className="text-slate-900 w-6 h-6" />
+              </div>
+              <span className="text-xl font-bold tracking-wider">COOKS DEVELOPMENT <span className="text-yellow-500">LTD</span></span>
+            </div>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-8">
+              <a href="#opportunity" className="hover:text-yellow-400 transition-colors font-medium">The Opportunity</a>
+              <a href="#strategy" className="hover:text-yellow-400 transition-colors font-medium">Our Strategy</a>
+              <a href="#portfolio" className="hover:text-yellow-400 transition-colors font-medium">Portfolio</a>
+              <a href="#contact" className="px-4 py-2 bg-yellow-500 text-slate-900 rounded-full font-bold hover:bg-yellow-400 transition-all shadow-md">
+                Invest Now
+              </a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button onClick={toggleMenu} className="text-white hover:text-yellow-400">
+                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-slate-800 pb-4 px-4">
+            <a href="#opportunity" className="block py-2 text-gray-300 hover:text-white" onClick={toggleMenu}>The Opportunity</a>
+            <a href="#strategy" className="block py-2 text-gray-300 hover:text-white" onClick={toggleMenu}>Our Strategy</a>
+            <a href="#portfolio" className="block py-2 text-gray-300 hover:text-white" onClick={toggleMenu}>Portfolio</a>
+            <a href="#contact" className="block py-2 text-yellow-400 font-bold" onClick={toggleMenu}>Invest Now</a>
+          </div>
+        )}
+      </nav>
+
+      {/* --- Hero Section --- */}
+      <header className="relative bg-slate-900 text-white py-24 lg:py-32 overflow-hidden">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 opacity-20">
+             <img 
+              src="https://photos2.spareroom.co.uk/images/flatshare/listings/large/88/34/88342867.jpg" 
+              alt="Luxury Interior" 
+              className="w-full h-full object-cover"
+            />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          <div className="max-w-2xl">
+            <div className="inline-block bg-yellow-500 text-slate-900 font-bold px-4 py-1 rounded-full text-sm mb-6 shadow-lg animate-pulse">
+              Open for Investment
+            </div>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+              Invest with <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">Confidence.</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              Secure, asset-backed returns from a proven property development team. 
+              Outperform the bank with fixed returns generated through strategic renovation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="#opportunity" className="flex items-center justify-center px-8 py-4 bg-yellow-500 text-slate-900 rounded-lg font-bold text-lg hover:bg-yellow-400 hover:scale-105 transition-all shadow-xl">
+                See The Numbers <ArrowRight className="ml-2 w-5 h-5" />
+              </a>
+              <a href="#portfolio" className="flex items-center justify-center px-8 py-4 border-2 border-slate-600 text-white rounded-lg font-semibold hover:bg-slate-800 transition-all">
+                View Projects
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* --- The Opportunity (Key Stats) --- */}
+      <section id="opportunity" className="py-16 bg-white relative -mt-10 z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <StatCard 
+              icon={<TrendingUp className="w-8 h-8 text-yellow-500" />}
+              value="12%"
+              label="Fixed Annual Return"
+              desc="Significantly higher than standard savings accounts (avg 5-7%)."
+            />
+            <StatCard 
+              icon={<Wallet className="w-8 h-8 text-yellow-500" />}
+              value="9-12 Months"
+              label="Short Term Commitment"
+              desc="Your capital is returned quickly, allowing for reinvestment or withdrawal."
+            />
+            <StatCard 
+              icon={<ShieldCheck className="w-8 h-8 text-yellow-500" />}
+              value="Asset Backed"
+              label="100% Security"
+              desc="Your investment is secured against physical UK real estate assets."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* --- The Strategy (BRR) --- */}
+      <section id="strategy" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Proven Strategy</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              We don't gamble on appreciation. We force appreciation through the 
+              <strong> Buy, Refurbish, Refinance (BRR)</strong> model.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <StrategyStep number="01" title="Buy" desc="We source distressed properties below market value." />
+            <StrategyStep number="02" title="Refurbish" desc="We strip back to brick and modernize, adding significant value." />
+            <StrategyStep number="03" title="Refinance" desc="We pull equity out to repay investors + interest." />
+            <StrategyStep number="04" title="Repeat" desc="We move to the next project, compounding growth." />
+          </div>
+        </div>
+      </section>
+
+      {/* --- Portfolio / Case Studies --- */}
+      <section id="portfolio" className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Track Record</h2>
+              <p className="text-gray-400 max-w-xl">
+                Real numbers from our recent projects. We value transparency above all else.
+              </p>
+            </div>
+            <div className="hidden md:block">
+              <button className="text-yellow-500 font-semibold hover:text-yellow-400 flex items-center">
+                View All Projects <ChevronRight className="w-5 h-5 ml-1" />
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* Project 1: Portland Street */}
+            <ProjectCard 
+              title="Portland Street"
+              badge="Completed Flip"
+              image="https://photos2.spareroom.co.uk/images/flatshare/listings/large/88/34/88342870.jpg"
+              stats={[
+                { label: "Purchase Price", value: "£115,000" },
+                { label: "Refurb Cost", value: "£22,000" },
+                { label: "Sold Price", value: "£206,000" },
+                { label: "Gross Profit", value: "£69,000" }
+              ]}
+            />
+
+             {/* Project 2: Manny's Place (Dudley) */}
+             <ProjectCard 
+              title="Dudley Project"
+              badge="Completed BRR"
+              image="https://photos2.spareroom.co.uk/images/flatshare/listings/large/88/34/88342880.jpg"
+              stats={[
+                { label: "Purchase Price", value: "£100,000" },
+                { label: "Refurb Cost", value: "£15,000" },
+                { label: "End Value", value: "£150,000" },
+                { label: "Equity Created", value: "£35,000" }
+              ]}
+            />
+
+             {/* Project 3: Kiddam (Current) */}
+             <ProjectCard 
+              title="Kiddam Project"
+              badge="In Progress"
+              image="https://photos2.spareroom.co.uk/images/flatshare/listings/large/88/34/88342878.jpg"
+              stats={[
+                { label: "Purchase Price", value: "£100,000" },
+                { label: "Est. Refurb", value: "£17,000" },
+                { label: "Est. Value", value: "Pending" },
+                { label: "Target Return", value: "12%" }
+              ]}
+            />
+
+          </div>
+        </div>
+      </section>
+
+      {/* --- Comparison Table --- */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-50 rounded-2xl p-8 shadow-xl border border-slate-200">
+            <h3 className="text-2xl font-bold text-center mb-8">Why invest with Cooks Development?</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b-2 border-gray-200">
+                    <th className="py-4 text-left text-gray-500 font-medium">Comparison</th>
+                    <th className="py-4 text-center text-gray-500 font-medium">Standard Bank ISA</th>
+                    <th className="py-4 text-center text-slate-900 font-bold text-lg bg-yellow-50 rounded-t-lg">Cooks Dev Ltd</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-4 font-semibold text-slate-700">Annual Return</td>
+                    <td className="py-4 text-center text-gray-500">~4 - 7%</td>
+                    <td className="py-4 text-center font-bold text-green-600 bg-yellow-50">12% Fixed</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-4 font-semibold text-slate-700">Inflation Beating?</td>
+                    <td className="py-4 text-center text-gray-500">Barely</td>
+                    <td className="py-4 text-center font-bold text-green-600 bg-yellow-50">Yes, Easily</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-4 font-semibold text-slate-700">Knowledge Required</td>
+                    <td className="py-4 text-center text-gray-500">None</td>
+                    <td className="py-4 text-center font-bold text-green-600 bg-yellow-50">None (Passive)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 font-semibold text-slate-700">Project Visibility</td>
+                    <td className="py-4 text-center text-gray-500">None</td>
+                    <td className="py-4 text-center font-bold text-green-600 bg-yellow-50">Full Updates</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-center text-xs text-gray-400 mt-6">*Past performance does not guarantee future results. Capital is at risk. 12% is based on current project offerings.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Contact / Footer --- */}
+      <footer id="contact" className="bg-slate-900 text-white py-16 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block p-4 rounded-full bg-slate-800 mb-6">
+            <Building className="w-8 h-8 text-yellow-500" />
+          </div>
+          <h2 className="text-3xl font-bold mb-4">Ready to discuss returns?</h2>
+          <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+            We are currently raising capital for our next acquisition in Kiddam. 
+            Slots are limited. Contact Brad today to secure your allocation.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
+            <a href="tel:+" className="flex items-center space-x-3 bg-white text-slate-900 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+              <Phone className="w-5 h-5 text-yellow-600" />
+              <span>Call Brad</span>
+            </a>
+            <a href="mailto:brad@cooksdevelopment.co.uk" className="flex items-center space-x-3 bg-slate-800 text-white px-6 py-3 rounded-lg font-bold border border-slate-700 hover:bg-slate-700 transition-colors">
+              <Mail className="w-5 h-5 text-yellow-500" />
+              <span>Email Enquiry</span>
+            </a>
+          </div>
+
+          <div className="border-t border-slate-800 pt-8 text-sm text-gray-500">
+            <p>&copy; 2024 Cooks Development Ltd. All Rights Reserved.</p>
+            <p className="mt-2">Cooks Development Ltd is a separate entity from electrical contracting services. <br/>Registered in England & Wales.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+// --- Sub Components ---
+
+const StatCard = ({ icon, value, label, desc }) => (
+  <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-yellow-500 transform hover:-translate-y-1 transition-transform">
+    <div className="mb-4 bg-yellow-50 w-16 h-16 rounded-full flex items-center justify-center">
+      {icon}
+    </div>
+    <div className="text-4xl font-extrabold text-slate-900 mb-2">{value}</div>
+    <div className="text-xl font-bold text-slate-700 mb-3">{label}</div>
+    <p className="text-gray-500 leading-relaxed">{desc}</p>
+  </div>
+);
+
+const StrategyStep = ({ number, title, desc }) => (
+  <div className="relative p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+    <div className="text-6xl font-black text-gray-100 absolute top-2 right-4 -z-0 select-none">{number}</div>
+    <div className="relative z-10">
+      <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
+      <p className="text-gray-600">{desc}</p>
+    </div>
+  </div>
+);
+
+const ProjectCard = ({ title, badge, image, stats }) => (
+  <div className="bg-slate-800 rounded-xl overflow-hidden shadow-lg border border-slate-700 flex flex-col h-full">
+    <div className="relative h-56">
+      <img src={image} alt={title} className="w-full h-full object-cover" />
+      <div className="absolute top-4 right-4 bg-yellow-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+        {badge}
+      </div>
+    </div>
+    <div className="p-6 flex-1 flex flex-col">
+      <h3 className="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-4">{title}</h3>
+      <div className="space-y-3 flex-1">
+        {stats.map((stat, idx) => (
+          <div key={idx} className="flex justify-between items-center text-sm">
+            <span className="text-gray-400">{stat.label}</span>
+            <span className="font-semibold text-white">{stat.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+export default InvestorPack;
